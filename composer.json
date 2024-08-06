@@ -1,5 +1,5 @@
 {
-    "name": "pocketmine/spl",
+    "name": "misoftteam/spl",
     "description": "Standard library files required by PocketMine-MP and related projects",
     "type": "library",
     "license": "LGPL-3.0",
