@@ -15,6 +15,13 @@
  * GNU General Public License for more details.
 */
 
-class ClassCastException extends InvalidArgumentException{
+declare(strict_types=1);
 
+interface BufferedLogger extends Logger{
+	/**
+	 * Buffers log messages while the closure is executed, and then flushes the buffer.
+	 * This is typically used to log blocks of messages on concurrent loggers.
+	 * @phpstan-param \Closure() : void $buffered
+	 */
+	public function buffer(\Closure $buffered) : void;
 }

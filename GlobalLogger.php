@@ -2,7 +2,7 @@
 
 /*
  * PocketMine Standard PHP Library
- * Copyright (C) 2014-2018 PocketMine Team <https://github.com/PocketMine/PocketMine-SPL>
+ * Copyright (C) 2018 PocketMine Team <https://github.com/pmmp/PocketMine-SPL>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,6 +15,28 @@
  * GNU General Public License for more details.
 */
 
-abstract class ThreadedLogger extends Thread implements Logger{
 
+declare(strict_types=1);
+
+/**
+ * Global accessor for logger
+ */
+final class GlobalLogger{
+
+	private function __construct(){
+		//NOOP
+	}
+
+	private static ?\Logger $logger = null;
+
+	public static function get() : \Logger{
+		if(self::$logger === null){
+			self::$logger = new SimpleLogger();
+		}
+		return self::$logger;
+	}
+
+	public static function set(\Logger $logger) : void{
+		self::$logger = $logger;
+	}
 }
